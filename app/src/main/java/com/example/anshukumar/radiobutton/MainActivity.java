@@ -1,5 +1,6 @@
 package com.example.anshukumar.radiobutton;
 
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,48 +11,32 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     TextView textView;
-    RadioButton bt1,bt2,bt3,bt4,bt5;
+    RadioGroup radioGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView=(TextView)findViewById(R.id.textView);
-        bt1= (RadioButton) findViewById(R.id.radioButton);
-        bt2= (RadioButton) findViewById(R.id.radioButton2);
-        bt3= (RadioButton) findViewById(R.id.radioButton3);
-        bt4= (RadioButton) findViewById(R.id.radioButton4);
-        bt5= (RadioButton) findViewById(R.id.radioButton5);
-        select();
-    }
-    void select() {
-        bt1.setOnClickListener(new View.OnClickListener() {
+        radioGroup=(RadioGroup)findViewById(R.id.radiogroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                textView.setText("Uttam Kumar Singh");
-            }
-        });
-        bt2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("Vipin Rathi");
-            }
-        });
-        bt3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("Sonika Thakral");
-            }
-        });
-        bt4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("Sonika Thakral");
-            }
-        });
-        bt5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setText("Anamika Gupta");
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                switch (radioGroup.getCheckedRadioButtonId()) {
+                    case R.id.radioButton:
+                        textView.setText("Uttam Kumar Singh");
+                        break;
+                    case R.id.radioButton2:
+                        textView.setText("Vipin Rathi");
+                        break;
+                    case R.id.radioButton3:
+                        textView.setText("Sonika Thakral");
+                        break;
+                    case R.id.radioButton4:
+                        textView.setText("Sonika Thakral");
+                        break;
+                    case R.id.radioButton5:
+                        textView.setText("Vipin Rathi");
+                }
             }
         });
     }
